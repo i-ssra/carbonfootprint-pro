@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+ <title>Carbone App – Calcul Bilan Carbone Entreprises</title>
+<meta name="description" content="Application web professionnelle pour calculer le bilan carbone (Scopes 1-3) des entreprises, transport et industrie.">
+
+<meta name="google-site-verification" content="TiDa9LONd4UTCJ9PPYrR3HgVtxcm99eB3w943-UXtMs" />
+
+
+
+<meta charset="UTF-8">
+<title>CarbonFootprint Pro</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="style.css">
+
+<!-- Librairies -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+
+<script src="script.js"></script>
+
+<script src="script.js"></script>
+<script src="script.js"></script>
+<body>
+ 
+<!-- BARRE SUPÉRIEURE -->
+<header class="topbar">
+  <div class="topbar-left">
+    <img src="logo.png" alt="Logo entreprise" class="logo">
+    
+  </div>
+  <div class="text-content">
+  <p>
+    CarbonFootprint Pro est une application professionnelle d’évaluation
+    du bilan carbone des entreprises.
+  </p>
+</div>
+
+</header>
+
+<!-- CONTENU -->
+<main class="app">
+
+<!-- INTRO -->
+<section class="intro">
+  <h1>Évaluation du Bilan Carbone</h1>
+  <p>Outil professionnel d’analyse des émissions de gaz à effet de serre  
+     selon les Scopes 1, 2 et 3.</p>
+</section>
+
+<!-- FORMULAIRE -->
+<form class="card">
+
+<h2> Informations générales</h2>
+
+<div class="grid">
+  <div>
+    <label>Nom de l’entreprise</label>
+    <input type="text" id="companyName">
+  </div>
+
+  <div>
+    <label>Secteur d’activité</label>
+    <select id="activityType">
+      <option value="bureau">Bureau / Services</option>
+      <option value="usine">Usine / Industrie</option>
+      <option value="centrale">Centrale de production</option>
+      <option value="logistique">Logistique / Transport</option>
+      <option value="autre">Autre</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Nombre total d’employés</label>
+    <input type="number" id="employees">
+  </div>
+</div>
+
+</form>
+
+<!-- SCOPE 1 -->
+<section class="card">
+<h2> Scope 1 – Émissions directes</h2>
+
+<div class="grid">
+  <div>
+    <label>Carburant véhicules (litres/an)</label>
+    <input type="number" id="fuel">
+  </div>
+
+  <div>
+    <label>Kilométrage véhicules de société (km/an)</label>
+    <input type="number" id="companyCarsKm">
+  </div>
+
+  <div>
+    <label>Gaz réfrigérants (kg/an)</label>
+    <input type="number" id="gaz">
+  </div>
+</div>
+</section>
+
+<!-- SCOPE 2 -->
+<section class="card">
+<h2> Scope 2 – Consommation d’énergie</h2>
+
+<div class="grid">
+  <div>
+    <label>Électricité consommée (kWh/an)</label>
+    <input type="number" id="electricity">
+  </div>
+
+  <div>
+    <label>Chauffage / vapeur (kWh/an)</label>
+    <input type="number" id="heating">
+  </div>
+</div>
+</section>
+
+<!-- SCOPE 3 -->
+<section class="card">
+<h2> Scope 3 – Émissions indirectes</h2>
+
+<h3>Déplacements des employés</h3>
+<div class="grid">
+  <div>
+    <label>Distance domicile–travail (km/jour/employé)</label>
+    <input type="number" id="commuteKm">
+  </div>
+
+  <div>
+    <label>Moyen de transport principal</label>
+    <select id="commuteType">
+      <option value="car">Voiture</option>
+      <option value="public">Transport public</option>
+      <option value="bike">Vélo / marche</option>
+    </select>
+  </div>
+</div>
+
+<h3>Déplacements professionnels</h3>
+<div class="grid">
+  <div>
+    <label>Voiture (km/an)</label>
+    <input type="number" id="carTravel">
+  </div>
+
+  <div>
+    <label>Avion (km/an)</label>
+    <input type="number" id="planeTravel">
+  </div>
+</div>
+
+<h3>Restauration & ressources</h3>
+<div class="grid">
+  <div>
+    <label>Repas servis (nombre/an)</label>
+    <input type="number" id="meals">
+  </div>
+
+  <div>
+    <label>Type de repas</label>
+    <select id="mealType">
+      <option value="viande">Majoritairement viande</option>
+      <option value="mixte">Mixte</option>
+      <option value="vegetarien">Végétarien</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Achats de biens (kg/an)</label>
+    <input type="number" id="purchases">
+  </div>
+
+  <div>
+    <label>Déchets produits (kg/an)</label>
+    <input type="number" id="waste">
+  </div>
+
+  <div>
+    <label>Consommation d’eau (m³/an)</label>
+    <input type="number" id="water">
+  </div>
+</div>
+</section>
+
+<!-- ACTIONS -->
+<section class="actions">
+ <button type="button" onclick="calculate()">Calculer le bilan carbone</button>
+ <div id="trialMessage" style="margin-top:15px; color:#c0392b; font-weight:bold;"></div>
+
+</section>
+
+<!-- RÉSULTATS -->
+<section class="card">
+<h2> Résultats</h2>
+<div id="result">Veuillez lancer le calcul.</div>
+<canvas id="graphCO2"></canvas>
+</section>
+
+</main>
+
+
+
+<header>
+  <img src="assets/logo.png">
+  <h1>CarbonFootprint Pro</h1>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>Informations entreprise</h2>
+    <div class="grid">
+      <!-- inputs -->
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Résultats</h2>
+    <div class="result" id="result">
+      Aucun calcul effectué
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © 2025 – Outil professionnel de bilan carbone
+</footer>
+
+
+
+</body>
+</html>

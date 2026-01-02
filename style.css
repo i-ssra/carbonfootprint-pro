@@ -1,0 +1,149 @@
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+
+
+body {
+  margin: 0;
+  background: #f4f6f8;
+  color: #04315f;
+}
+
+/* HEADER */
+header {
+  background: #b7eadd;
+  color: rgb(50, 92, 52);
+  padding: 10px 60px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+header img {
+  height: 80px;
+}
+
+header h1 {
+  font-size: 20px;
+  margin: 0;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* CARDS */
+.card {
+  background: white;
+  padding: 25px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(192, 4, 4, 0.06);
+}
+
+.card h2 {
+  margin-top: 10;
+  color: #09a319;
+}
+
+/* FORM */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+
+label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* BUTTONS */
+.actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+button {
+  flex: 1;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.calculate {
+  background: #09a319;
+  color: white;
+}
+
+.pdf {
+  background: #032a51;
+  color: white;
+}
+
+/* RESULT */
+.result {
+  background: #e6f4f1;
+  border-left: 6px solid #09a319;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.score {
+  font-size: 28px;
+  font-weight: bold;
+  color: #bcefe2;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+  color: #7f8c8d;
+}
+
+/* MOBILE */
+@media (max-width: 50px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+}
+
+.contact-button {
+  display: inline-block;
+  background-color: #0073e6;
+  color: white;
+  padding: 12px 25px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.contact-button:hover {
+  background-color: #005bb5;
+}
